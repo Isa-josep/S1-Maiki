@@ -11,7 +11,7 @@ public class Program{
           arr[i]=b;//Esta linea dice que lo que esta en b se mete en el indice de i, ejemplo si si b es 5 arr[0] es 5 y asi hasta que se cumpla el for 
         }
         foreach(int i in arr){// utlizamos el foreach "hack" para imprimir el arreglo, declaramos una variable luego le damos el nombre del arreglo
-          Console.WriteLine(i);// aqui imprimimos i que va a iterar todo el arreglo
+          Console.WriteLine(i) ;// aqui imprimimos i que va a iterar todo el arregloo
         }
     }
 }
