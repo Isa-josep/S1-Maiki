@@ -52,14 +52,14 @@ public class Program{
         List<RandomNumber>repM = new List<RandomNumber>();
         
         for (int i = 1; i <= MAXv; i++){
-            bool coordenadasValidas = false;
-            while (!coordenadasValidas){
+            bool flag = false;
+            while (!flag){
                 Console.WriteLine("Ingresa la posición 'Y' en la que quiere agregar un barco");
                 L = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Ingresa la posición 'X' en la que quiere agregar un barco");
                 R = Convert.ToInt32(Console.ReadLine());
                 if (L >= 0 && L < M && R >= 0 && R < N){
-                    coordenadasValidas = true;
+                    flag = true;
                     AñadirBarcos(mtx1, M, N, L, R);
                 }
                 else{
@@ -89,19 +89,29 @@ public class Program{
                     Console.Write(mtx1[i, j] + " "); 
                 }
             Console.WriteLine();
-        }
-            Console.WriteLine("Ingresa la posision 'Y' en la que quiere buscar un barco");
-            L = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Ingresa la posision 'X' en la que quiere buscar un barco");
-            R = Convert.ToInt32(Console.ReadLine());
-            if (searchB(mtx2, M, N, L, R)){
-                lifepc--;
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("\t Felicidades encontraste un barco rival!!!"+" Tiene "+ lifepc);
-                Console.ResetColor();
-                DeleteB(mtx2,M,N,L,R);
+            } 
+            bool flag=false;
+            while(!flag){
+                Console.WriteLine("Ingresa la posision 'Y' en la que quiere buscar un barco");
+                L = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Ingresa la posision 'X' en la que quiere buscar un barco");
+                R = Convert.ToInt32(Console.ReadLine());
+                if (L >= 0 && L < M && R >= 0 && R < N){
+                    flag = true;
+                    if (searchB(mtx2, M, N, L, R)){
+                    lifepc--;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\t Felicidades encontraste un barco rival!!!"+" Tiene "+ lifepc);
+                    Console.ResetColor();
+                    DeleteB(mtx2,M,N,L,R);
+                    }
+                }
+                else{
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("\t \t Ingrese coordenadas validad");
+                    Console.ResetColor();
+                }
             }
-            
             if (lifepc != 0){ 
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\t \t Turno del Rival");
@@ -128,6 +138,15 @@ public class Program{
         }
         // El juego ha terminado porque uno de los jugadores se quedó sin vidas
         if (lifep == 0){
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\t \t Tablero de la pc");
+            Console.ResetColor();
+            for (int i = 0; i < M; i++){
+                for (int j = 0; j < N; j++){
+                    Console.Write(mtx2[i, j] + " "); 
+                }
+            Console.WriteLine();
+            }
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("¡Has perdido! El PC ha ganado.");
             Console.ResetColor();
