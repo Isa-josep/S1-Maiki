@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 public class Program{
     public static void Main(){
       Console.Clear();
@@ -11,3 +11,4 @@ public class Program{
         Console.WriteLine("Ganaras por dia "+(d)+"\nganas por semana "+(d*7)+"\nganas por mes "+(30*d)+"\nganas por año "+(365*d));
     }
 }
+        int a,b,d;
